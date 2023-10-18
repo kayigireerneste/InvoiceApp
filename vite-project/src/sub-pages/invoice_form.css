@@ -1,0 +1,397 @@
+.content{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+}
+
+.sidebar{
+    width: 10%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    background-color: #373B53;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px; 
+}
+
+.sidebar .logo{
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar .logo h1{
+    font-size: 18px;
+}
+
+.logo p{
+    text-decoration: overline;
+    font-size: 10px;
+    opacity: 0.5;
+}
+
+.sidebar .lightMode_back{
+    width: 100%;
+}
+
+.sidebar .lightMode{
+    font-size: 18px;
+}
+
+.sidebar .lightMode_back{
+    width: 100%;
+    height: 80px;
+}
+
+.sidebar .lightMode{
+    margin-left: 33px;
+}
+
+.sidebar img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+
+.main_content{
+    min-height: 100vh;
+    width: 90%;
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+.header_title{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header_title .title{
+    display: block;
+}
+
+.title h1{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.title p{
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+.header_title .add_and_filter{
+    display: flex;
+    align-items: center;
+}
+
+
+.btn{
+    cursor: pointer;
+    margin-left: 32px;
+    padding: 1.2em 1.8em;
+    background: #9277FF;
+    color: #FFFFFF;
+    border-radius: 50PX;
+    border: none;
+}
+
+.btn:hover{
+    background-color: #7C5DFA;
+}
+
+.filter_by{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.invoices{
+    display: grid;
+    align-items: center;
+    margin-top: 40px;
+    margin-left: 160px;
+}
+
+.invoice_items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 83%;
+    height: 90px;
+    background-color: #1E2139;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.invoice_items:hover{
+    border: 2px solid#7C5DFA;
+}
+
+.invoice_items .invoice_id{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.invoice_items .invoice_date{
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+.invoice_items .client_name{
+    font-size: 12px;
+    opacity: 0.5;
+    margin-right: 220px;
+}
+
+.invoice_items .invoice_amount{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.invoice_items .simple_btn{
+    padding: 0.5em 1em;
+    background-color: #2B2736;
+    border: none;
+    color: #FF8F00;
+}
+
+.modal {
+    min-height: 100vh;
+    width: 50%;
+    margin-left: 128px;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: #1E2139;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.modal::-webkit-scrollbar{
+    display: none;
+}
+
+.page_content {
+    min-height: 100vh;
+    position: absolute;
+    top: 130%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+}
+
+.bill_form{
+    display: flex;
+    flex-direction: column;
+}
+
+.bill_from{
+    display: flex;
+    flex-direction: column;
+}
+
+.bill_from .bill_from_title, .bill_to-title{
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #6D5DFA;
+    font-weight: bold;
+}
+
+.bill_from .from_street_form {
+    display: grid;
+}
+
+label{
+    font-size: 14px;
+    color: #FFFFFF;
+    opacity: 0.7;
+}
+
+.from2{
+    margin-top: 10px;
+    width: 550px;
+    border: #252945;
+    padding: 10px;
+}
+
+input{
+    background-color: #252945;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #FFFFFF;
+    height: 40px;
+    border-radius: 5px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.additional_submition{
+    display: flex;
+    margin-top: 20px;
+}
+
+.form1{
+    display: grid;
+    margin-right: 20px;
+}
+
+.city{
+    padding: 10px;
+    width: 130px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.bill_to{
+    display: grid;
+}
+
+.ClientName{
+    display: grid;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.OptionForDay{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 550px;
+    border: none;
+    padding: 10px;
+    height: 40px;
+    outline: none;
+    background-color: #252945;
+    color: #FFFFFF;
+}
+
+.PaymentTerms{
+    margin-top: 20px;
+}
+
+.ItemList{
+    display: grid;
+    margin-top: 80px;
+}
+
+.Items{
+    display: flex;
+}
+
+.Item:nth-child(2){
+    margin-left: 20px;
+}
+
+.Item:nth-child(3){
+    margin-left: 20px;
+}
+
+.Item:nth-child(4){
+    margin-left: 20px;
+}
+
+.ListTitle{
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.Item{
+    display: grid;
+    margin-bottom: 20px;
+}
+
+.ItemName{
+    width: 120px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.Qty{
+    width: 80px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+
+.Price{
+    width: 90px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.Total{
+    width: 110px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.AddItemsBtn{
+    width: 85%;
+    height: 50px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #3f3b70;
+    border-radius: 25px;
+    border: none;
+    background-color: #1E2139;
+}
+
+.AddItemsBtn:hover{
+    background-color: #FFFFFF;
+}
+
+.Option_Btns{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 80px;
+    margin-left: -80px;
+}
+
+.Option_Btns .Discard{
+    padding: 1.2em 1.5em;
+    border-radius: 25px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #0f0f0f;
+    opacity: 0.6;
+}
+
+.Option_Btns .Draft{
+    padding: 1.2em 2em;
+    border-radius: 25px;
+    border: none;
+    background-color: #373B53;
+    color: #FFFFFF;
+    opacity: 0.6;
+    margin-right: -80px;
+}
+
+.Draft:hover{
+    background-color: #0C0E16;
+}
+
+.Option_Btns .SaveAndSend{
+    padding: 1.2em 2em;
+    border-radius: 25px;
+    border: none;
+    background-color: #312D60;
+    color: #949494;
+    opacity: 0.6;
+}
+
+.indexed {
+    min-height: 10vh;
+}
