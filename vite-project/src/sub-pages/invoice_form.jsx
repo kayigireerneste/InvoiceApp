@@ -1,5 +1,5 @@
 import "./invoice_form.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoIosAdd, IoIosArrowForward } from "react-icons/io";
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import { MdLightMode } from "react-icons/md";
@@ -17,6 +17,8 @@ const handleOpen = () => {
   const handleClose = () => {
     setModal(false);
   }
+
+  
 
   //to add input fields for new item
   const [InputList, SetInputList] = useState([{
@@ -36,8 +38,51 @@ const handleOpen = () => {
   }
 
   //toSaveAndSend value to the invoice
+  const [inputData, setInputData] =useState({
+    from_street: '',
+    city:'',
+    PostCode: '',
+    Country: '',
+    ClientName: '',
+    ClientEmail: '',
+    ClientStreetAddress: '',
+    city2: '',
+    PostCode2: '',
+    Country2: '',
+    InvoiceDate: '',
+    ProjectDescription: '',
+    ItemName: '',
+    Qty: '',
+    Price: '',
+    Total: '',
 
+  })
+  useEffect(()=> {
+    const storedData = JSON.parse(localStorage.getItem('DataDate')) || [];
+    if(storedData){
+      setInputData(storedData)
+    }
+  }, [])
 
+  const handleChange= (e) => {
+    const {name, value}= e.target
+    setInputData((prevData)=>({
+      ...prevData,
+      [name]: value
+    }))
+
+  }
+
+  const handelSubmit = () => {
+    const storedData = JSON.parse(localStorage.getItem('DataDate')) || [] 
+    const newdata = [ ...storedData, inputData ];
+    localStorage.setItem("DataDate", JSON.stringify(newdata));
+  }
+  
+
+const dataFromLocalStorage = JSON.parse(localStorage.getItem('DataDate'))||[]
+
+console.log("+++++++++++++++++", dataFromLocalStorage);
   return (
     <>
     <div className="content">
@@ -76,56 +121,73 @@ const handleOpen = () => {
             </button>
           </div>
         </div>
+
         <div className="invoices">
-          <div className="invoice_items">
+{    dataFromLocalStorage.map((data, index) => (
+          <div className="invoice_items" key={index}>
             <div>
-              <h3 className="invoice_id">#KE584A</h3>
+              <h3 className="invoice_id">{"FN"+index+56}</h3>
             </div>
 
             <div>
-              <h4 className="invoice_date">2023-10-13</h4>
+              <h4 className="invoice_date">{data?.InvoiceDate}</h4>
             </div>
 
             <div>
-              <h4 className="client_name">Kayode kay Aye</h4>
+              <h4 className="client_name">{data?.ClientName}</h4>
             </div>
 
             <div>
-              <h2 className="invoice_amount">£230</h2>
+              <h2 className="invoice_amount">{data?.Total}</h2>
             </div>
             <div>
-              <button className="simple_btn">pedding</button>
+              <button className="simple_btn">pendind</button>
             </div>
             <div>
               <IoIosArrowForward className="sideicon" />
             </div>
           </div>
+          ))}
+
         </div>
+
       </div>
       </div>
 
       {modal && (
       <div className="modal">
         <div className="page_content">
-          <form action="#" className="bill_form">
+          <form action="#" className="bill_form" onSubmit={handelSubmit}>
             <div className="bill_from">
               <h2 className="bill_from_title">Bill From</h2>
               <div className="from_street_form">
                 <label htmlFor="FromStreetAddress">Street Address</label>
-                <input type="text" name="from_street" className="from2" />
+                <input type="text" name="from_street" className="from2" 
+                value={inputData.from_street}
+                onChange={handleChange}
+                />
               </div>
               <div className="additional_submition">
                 <div className="form1">
                   <label htmlFor="City">City</label>
-                  <input type="text" name="city" className="city" />
+                  <input type="text" name="city" className="city" 
+                  value={inputData.city}
+                  onChange={handleChange}
+                  />
                 </div>
                 <div className="form1">
                   <label htmlFor="PostCode">PostCode</label>
-                  <input type="text" name="PostCode" className="city" />
+                  <input type="text" name="PostCode" className="city" 
+                  value={inputData.PostCode}
+                  onChange={handleChange}
+                  />
                 </div>
                 <div className="form1">
                   <label htmlFor="Country">Country</label>
-                  <input type="text" name="Country" className="city" />
+                  <input type="text" name="Country" className="city" 
+                  value={inputData.Country}
+                  onChange={handleChange}
+                  />
                 </div>
               </div>
             </div>
@@ -133,7 +195,10 @@ const handleOpen = () => {
               <h2 className="bill_to-title">Bill To</h2>
               <div className="ClientName">
                 <label htmlFor="ClientName">Client’s Name</label>
-                <input type="text" name="ClientName" className="from2" />
+                <input type="text" name="ClientName" className="from2" 
+                value={inputData.ClientName}
+                onChange={handleChange}
+                />
               </div>
               <div className="ClientName">
                 <label htmlFor="ClientEmail">Client’s Email</label>
@@ -142,6 +207,8 @@ const handleOpen = () => {
                   placeholder="e.g. email.example.com"
                   name="ClientEmail"
                   className="from2"
+                  value={inputData.ClientEmail}
+                  onChange={handleChange}
                 />
               </div>
               <div className="ClientName">
@@ -150,25 +217,39 @@ const handleOpen = () => {
                   type="text"
                   name="ClientStreetAddress"
                   className="from2"
+                  value={inputData.ClientStreetAddress}
+                  onChange={handleChange}
                 />
               </div>
               <div className="additional_submition">
                 <div className="form1">
                   <label htmlFor="City">City</label>
-                  <input type="text" name="city" className="city" />
+                  <input type="text" name="city2" className="city" 
+                  value={inputData.city2}
+                  onChange={handleChange}
+                  />
                 </div>
                 <div className="form1">
                   <label htmlFor="PostCode">PostCode</label>
-                  <input type="text" name="PostCode" className="city" />
+                  <input type="text" name="PostCode2" className="city"
+                  value={inputData.PostCode2}
+                  onChange={handleChange} 
+                  />
                 </div>
                 <div className="form1">
                   <label htmlFor="Country">Country</label>
-                  <input type="text" name="Country" className="city" />
+                  <input type="text" name="Country2" className="city"
+                  value={inputData.Country2}
+                  onChange={handleChange} 
+                  />
                 </div>
               </div>
               <div className="InvoiceDate">
                 <label htmlFor="InvoiceDate">Invoice Date</label>
-                <input type="text" name="InvoiceDate" className="from2" />
+                <input type="date" name="InvoiceDate" className="from2" 
+                value={inputData.InvoiceDate}
+                onChange={handleChange}
+                />
               </div>
               <div className="PaymentTerms">
                 <label htmlFor="PaymentTerms">Payment Terms</label>
@@ -186,6 +267,8 @@ const handleOpen = () => {
                   name="ProjectDescription"
                   placeholder="e.g. Graphic Design Services"
                   className="from2"
+                  value={inputData.ProjectDescription}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -197,19 +280,31 @@ const handleOpen = () => {
               <div className="Items">
                 <div className="Item">
                   <label htmlFor="ItemName">Item Name</label>
-                  <input placeholder="New Item" id="ItemName" type="text" name="ItemName" className="ItemName" />
+                  <input placeholder="New Item" id="ItemName" type="text" name="ItemName" className="ItemName" 
+                  value={inputData.ItemName}
+                  onChange={handleChange}
+                  />
                 </div>
                 <div className="Item">
                   <label htmlFor="Qty">Qty.</label>
-                  <input placeholder="0.0" id="Qty" type="number" name="Qty" className="Qty" />
+                  <input placeholder="0.0" id="Qty" type="number" name="Qty" className="Qty" 
+                  value={inputData.Qty}
+                  onChange={handleChange}
+                  />
                 </div>
                 <div className="Item">
                   <label htmlFor="Price">Price</label>
-                  <input placeholder="0.0" id="Price" type="number" name="Price" className="Price" />
+                  <input placeholder="0.0" id="Price" type="number" name="Price" className="Price" 
+                  value={inputData.Price}
+                  onChange={handleChange}
+                  />
                 </div>
                 <div className="Item">
                   <label htmlFor="Total">Total</label>
-                  <input placeholder="0.0" id="Total" type="number" name="Total" className="Total" />
+                  <input placeholder="0.0" id="Total" type="number" name="Total" className="Total" 
+                  value={inputData.Total}
+                  onChange={handleChange}
+                  />
                 </div>
               </div>
               {InputList.length-1===index &&
